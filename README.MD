@@ -1,28 +1,21 @@
 # Instaclone
-## Instaclone Backend
-### Setup
+### Instaclone Backend
 
-1. Apollo Server & GraphQL
-```bash
-npm i apollo-server@2.25.2 graphql
-```
+## **What's Included?**
 
-2. Babel
-> Babel : javascript complier
-```bash
-npm install --save-dev @babel/core
-npm install @babel/preset-env --save-dev
-npm install @babel/node --save-dev
-```
+### Features
 
-3. Prisma
-```bash
-npm install prisma -D
-npx prisma init
-```
+• ⚡ [React](https://ko.reactjs.org/) for Static Site Generator
+
+• 🔥 Type checking [TypeScript](https://www.typescriptlang.org/)
+
+• 🪢 Use query language for APIs with [GraphQL](https://graphql.org/) and manage data with [Apollo](https://www.apollographql.com/)
+
+• 📐 Simplify interaction with database schemas and ensure type safety with [Prisma](https://www.prisma.io/)
 
 
-## API
+
+## Module
 ### User:
 - [x] Create Account
 - [x] See Profile
