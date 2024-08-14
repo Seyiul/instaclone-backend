@@ -1,13 +1,12 @@
 import client from "../../client";
 import bcrypt from "bcrypt";
-import { protectResolver } from "../user.utils";
 
 export default {
   Mutation: {
     editProfile: async (
       _,
       { firstName, lastName, username, email, password: newPassword },
-      { loggedInUser }
+      { loggedInUser, protectResolver }
     ) => {
       protectResolver(loggedInUser);
       console.log(loggedInUser);
