@@ -1,4 +1,5 @@
 # Instaclone
+
 ### Instaclone Backend
 
 ## **What's Included?**
@@ -13,10 +14,10 @@
 
 • 📐 Simplify interaction with database schemas and ensure type safety with [Prisma](https://www.prisma.io/)
 
-
-
 ## Module
+
 ### User:
+
 - [x] Create Account
 - [x] See Profile
 - [x] Login
@@ -24,5 +25,3 @@
 - [ ] Follow User
 - [ ] Unfollow User
 - [ ] Change Avatar (Image Upload)
-
-
