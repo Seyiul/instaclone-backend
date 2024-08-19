@@ -1,16 +1,17 @@
 import bcrypt from "bcrypt";
 import { protectedResolver } from "../user.utils";
-
+import client from "../../client";
+import { GraphQLUpload } from "graphql-upload-ts";
 const resolverFn = async (
   _,
-  { firstName, lastName, username, email, password: newPassword, bio },
-  { loggedInUser, client }
+  { firstName, lastName, username, email, password: newPassword, bio, avatar },
+  { loggedInUser }
 ) => {
+  console.log("avatar", avatar);
   let uglyPassword = null;
   if (newPassword) {
     uglyPassword = await bcrypt.hash(newPassword, 10);
   }
-
   const updatedUser = await client.user.update({
     where: {
       id: loggedInUser.id,
@@ -24,7 +25,6 @@ const resolverFn = async (
       ...(uglyPassword && { password: uglyPassword }),
     },
   });
-
   if (updatedUser.id) {
     return {
       ok: true,
@@ -32,12 +32,13 @@ const resolverFn = async (
   } else {
     return {
       ok: false,
-      error: "Could not update profile",
+      error: "Could not update profile.",
     };
   }
 };
 
 export default {
+  Upload: GraphQLUpload,
   Mutation: {
     editProfile: protectedResolver(resolverFn),
   },
