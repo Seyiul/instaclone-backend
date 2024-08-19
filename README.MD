@@ -25,3 +25,7 @@
 - [ ] Follow User
 - [ ] Unfollow User
 - [ ] Change Avatar (Image Upload)
+
+#### References
+
+- [graphql Files Upload](https://www.apollographql.com/docs/apollo-server/v3/data/file-uploads/)
