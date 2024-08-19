@@ -29,3 +29,4 @@
 #### References
 
 - [graphql Files Upload](https://www.apollographql.com/docs/apollo-server/v3/data/file-uploads/)
+- [CORS error](https://www.apollographql.com/docs/apollo-server/security/cors/)

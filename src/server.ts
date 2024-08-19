@@ -21,18 +21,7 @@ async function startServer() {
 
   const app = express();
 
-  // This middleware should be added before calling `applyMiddleware`.
-  app.use(
-    "/graphql",
-    cors<cors.CorsRequest>({
-      origin: [
-        "https://www.your-app.example",
-        "https://studio.apollographql.com",
-      ],
-    }),
-    express.json(),
-    graphqlUploadExpress()
-  );
+  app.use(graphqlUploadExpress());
 
   server.applyMiddleware({ app });
 
