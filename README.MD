@@ -23,8 +23,11 @@
 - [x] Login
 - [x] Edit Profile
 - [x] Change Avatar (Image Upload)
-- [ ] Follow User
-- [ ] Unfollow User
+- [x] Follow User
+- [x] Unfollow User
+- [ ] Search Users
+- [ ] See Followers
+- [ ] See Following
 
 #### References
 
