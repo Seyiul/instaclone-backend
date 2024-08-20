@@ -5,9 +5,11 @@ import { getUser } from "./users/user.utils";
 import client from "./client";
 import express from "express";
 import { graphqlUploadExpress } from "graphql-upload-ts";
+import logger from "morgan";
+
 async function startServer() {
   const PORT = process.env.PORT;
-  const server = new ApolloServer({
+  const apollo = new ApolloServer({
     typeDefs,
     resolvers,
     context: async ({ req }) => {
@@ -17,19 +19,21 @@ async function startServer() {
       };
     },
   });
-  await server.start();
+
+  await apollo.start();
 
   const app = express();
-
+  app.use(logger("tiny"));
   app.use(graphqlUploadExpress());
+  app.use("/static", express.static("uploads"));
 
-  server.applyMiddleware({ app });
+  apollo.applyMiddleware({ app });
 
-  await new Promise<void>((r) => app.listen({ port: PORT }, r));
-
-  console.log(
-    `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
-  );
+  app.listen({ port: PORT }, () => {
+    console.log(
+      `🚀 Server ready at http://localhost:${PORT}${apollo.graphqlPath}`
+    );
+  });
 }
 
 startServer();
