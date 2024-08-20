@@ -5,8 +5,8 @@ import { getUser } from "./users/user.utils";
 import client from "./client";
 import express from "express";
 import { graphqlUploadExpress } from "graphql-upload-ts";
-import cors from "cors";
 async function startServer() {
+  const PORT = process.env.PORT;
   const server = new ApolloServer({
     typeDefs,
     resolvers,
@@ -25,9 +25,11 @@ async function startServer() {
 
   server.applyMiddleware({ app });
 
-  await new Promise<void>((r) => app.listen({ port: 4000 }, r));
+  await new Promise<void>((r) => app.listen({ port: PORT }, r));
 
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+  console.log(
+    `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
+  );
 }
 
 startServer();
