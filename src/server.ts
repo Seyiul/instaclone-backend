@@ -23,7 +23,6 @@ async function startServer() {
   await apollo.start();
 
   const app = express();
-  app.use(logger("tiny"));
   app.use(graphqlUploadExpress());
   app.use("/static", express.static("uploads"));
 

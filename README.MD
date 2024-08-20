@@ -25,11 +25,11 @@
 - [x] Change Avatar (Image Upload)
 - [x] Follow User
 - [x] Unfollow User
+- [ ] See Followers and See Following w/ Pagination
 - [ ] Search Users
-- [ ] See Followers
-- [ ] See Following
 
 #### References
 
 - [graphql Files Upload](https://www.apollographql.com/docs/apollo-server/v3/data/file-uploads/)
 - [CORS error](https://www.apollographql.com/docs/apollo-server/security/cors/)
+- [Prisma Pagination](https://www.prisma.io/docs/orm/prisma-client/queries/pagination)
