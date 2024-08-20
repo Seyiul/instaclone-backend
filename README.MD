@@ -25,7 +25,7 @@
 - [x] Change Avatar (Image Upload)
 - [x] Follow User
 - [x] Unfollow User
-- [ ] See Followers and See Following w/ Pagination
+- [x] See Followers and See Following w/ Pagination
 - [ ] Search Users
 
 #### References
