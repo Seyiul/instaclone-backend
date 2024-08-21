@@ -34,8 +34,8 @@
 
 ### Photos
 
-- [ ] Upload Photo
-- [ ] See Photo
+- [x] Upload Photo
+- [x] See Photo
 - [ ] See Hashtags
 - [ ] Search Photos
 - [ ] Edit Photo
@@ -54,3 +54,4 @@
 - [graphql Files Upload](https://www.apollographql.com/docs/apollo-server/v3/data/file-uploads/)
 - [CORS error](https://www.apollographql.com/docs/apollo-server/security/cors/)
 - [Prisma Pagination](https://www.prisma.io/docs/orm/prisma-client/queries/pagination)
+- [Regex Test](https://www.regexpal.com/)
