@@ -39,7 +39,7 @@
 - [x] See Hashtags
 - [x] Search Photos
 - [x] Edit Photo
-- [ ] Like / Unlike Photo
+- [x] Like / Unlike Photo
 - [ ] See Photo Likes
 - [ ] See Feed
 
@@ -55,3 +55,4 @@
 - [CORS error](https://www.apollographql.com/docs/apollo-server/security/cors/)
 - [Prisma Pagination](https://www.prisma.io/docs/orm/prisma-client/queries/pagination)
 - [Regex Test](https://www.regexpal.com/)
+- [Compound Unique](https://www.prisma.io/docs/orm/prisma-client/special-fields-and-types/working-with-composite-ids-and-constraints)
