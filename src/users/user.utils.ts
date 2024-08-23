@@ -1,6 +1,7 @@
 import * as jwt from "jsonwebtoken";
 import client from "../client";
 import { Resolver } from "../types";
+import { GraphQLResolveInfo } from "graphql";
 export const getUser = async (token) => {
   try {
     if (!token) {
@@ -22,12 +23,22 @@ export const getUser = async (token) => {
 };
 
 export function protectedResolver(ourResolver: Resolver) {
-  return function (root, args, context, info) {
+  return function (
+    root: any,
+    args: any,
+    context: any,
+    info: GraphQLResolveInfo
+  ) {
     if (!context.loggedInUser) {
-      return {
-        ok: false,
-        error: "Please log in to perform this action",
-      };
+      const query = info.operation.operation === "query";
+      if (query) {
+        return null;
+      } else {
+        return {
+          ok: false,
+          error: "Please log in to perform this action",
+        };
+      }
     }
     return ourResolver(root, args, context, info);
   };
