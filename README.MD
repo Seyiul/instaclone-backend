@@ -42,12 +42,18 @@
 - [x] Like / Unlike Photo
 - [x] See Photo Likes
 - [x] See Feed
+- [ ] Is Mine (Delete Photo)
+- [ ] See Photo Comments
 
 ### Comments
 
-- [ ] Comment on Photo
+- [x] Comment on Photo
 - [ ] Edit Comment
 - [ ] Delete Comment
+
+### Extras
+
+- [ ] S3 Image Upload
 
 #### References
 
