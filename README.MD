@@ -42,14 +42,14 @@
 - [x] Like / Unlike Photo
 - [x] See Photo Likes
 - [x] See Feed
-- [ ] Is Mine (Delete Photo)
+- [x] Delete Photo
 - [x] See Photo Comments
 
 ### Comments
 
 - [x] Comment on Photo
 - [ ] Edit Comment
-- [ ] Delete Comment
+- [x] Delete Comment
 
 ### Extras
 
