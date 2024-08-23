@@ -41,7 +41,7 @@
 - [x] Edit Photo
 - [x] Like / Unlike Photo
 - [x] See Photo Likes
-- [ ] See Feed
+- [x] See Feed
 
 ### Comments
 
