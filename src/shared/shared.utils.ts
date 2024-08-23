@@ -1,0 +1,10 @@
+import * as AWS from "aws-sdk";
+
+AWS.config.update({
+  credentials: {
+    accessKeyId: process.env.AWS_KEY,
+    secretAccessKey: process.env.AWS_SECRETE,
+  },
+});
+
+export const uploadPhoto = (file) => {};
