@@ -43,7 +43,7 @@
 - [x] See Photo Likes
 - [x] See Feed
 - [ ] Is Mine (Delete Photo)
-- [ ] See Photo Comments
+- [x] See Photo Comments
 
 ### Comments
 

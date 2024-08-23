@@ -1,3 +1,4 @@
+import { skip } from "node:test";
 import client from "../client";
 
 export default {
@@ -24,6 +25,12 @@ export default {
           photoId: id,
         },
       }),
+    comments: ({ id }) =>
+      client.comment.count({
+        where: {
+          photoId: id,
+        },
+      }),
   },
   Hashtag: {
     photos: ({ id }, { page }) => {
@@ -33,7 +40,10 @@ export default {
             id,
           },
         })
-        .photos();
+        .photos({
+          take: 5,
+          skip: (page - 1) * 5,
+        });
     },
     totalPhotos: ({ id }) =>
       client.photo.count({
