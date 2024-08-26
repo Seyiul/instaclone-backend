@@ -14,6 +14,8 @@
 
 • 📐 Simplify interaction with database schemas and ensure type safety with [Prisma](https://www.prisma.io/)
 
+• 🐘 Powerful, open-source relational database system with [PostgreSQL](https://www.postgresql.org/)
+
 ## Module
 
 ### User
@@ -54,6 +56,13 @@
 ### Extras
 
 - [x] S3 Image Upload
+
+### DMs
+
+- [ ] Create Room
+- [ ] Get Room
+- [ ] Send Message
+- [ ] Realtime Messages
 
 #### References
 
