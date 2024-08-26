@@ -1,10 +1,10 @@
 import { S3Client } from "@aws-sdk/client-s3";
 import { Upload } from "@aws-sdk/lib-storage";
 
-export const uploadPhoto = async (file, userId) => {
+export const uploadToS3 = async (file, userId, folderName) => {
   const { filename, createReadStream } = await file;
   const readStream = createReadStream();
-  const objectName = `${userId}-${Date.now()}-${filename}`;
+  const objectName = `${folderName}/${userId}-${Date.now()}-${filename}`;
 
   const upload = new Upload({
     client: new S3Client({
