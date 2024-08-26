@@ -59,9 +59,10 @@
 
 ### DMs
 
-- [ ] Create Room
-- [ ] Get Room
-- [ ] Send Message
+- [x] See Rooms
+- [x] Create Room
+- [ ] See Room
+- [x] Send Message
 - [ ] Realtime Messages
 
 #### References
