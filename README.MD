@@ -75,3 +75,5 @@
 - [Regex Test](https://www.regexpal.com/)
 - [Compound Unique](https://www.prisma.io/docs/orm/prisma-client/special-fields-and-types/working-with-composite-ids-and-constraints)
 - [Migrateing AWS SDK from v2 to v3 for S3](https://dev.to/sw360cab/migrating-aws-sdk-from-v2-to-v3-for-s3-32lh)
+- [graphQL subscription](https://www.apollographql.com/docs/apollo-server/data/subscriptions/)
+  - GraphQL Redis Server를 대체하여 사용

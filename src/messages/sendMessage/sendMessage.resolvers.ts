@@ -1,3 +1,5 @@
+import { NEW_MESSAGE } from "../../constants";
+import pubsub from "../../pubsub";
 import { protectedResolver } from "../../users/user.utils";
 
 export default {
@@ -54,7 +56,7 @@ export default {
           }
         }
 
-        await client.message.create({
+        const message = await client.message.create({
           data: {
             payload,
             room: {
@@ -69,6 +71,8 @@ export default {
             },
           },
         });
+
+        pubsub.publish(NEW_MESSAGE, { roomUpdates: message });
 
         return {
           ok: true,
