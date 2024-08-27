@@ -11,6 +11,8 @@ import { createServer } from "http";
 import { WebSocketServer } from "ws";
 import { useServer } from "graphql-ws/lib/use/ws";
 import { makeExecutableSchema } from "@graphql-tools/schema";
+import { SubscriptionServer } from "subscriptions-transport-ws";
+import { execute, subscribe } from "graphql";
 
 (async () => {
   try {
@@ -19,14 +21,32 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
     const app = express();
     const httpServer = createServer(app);
     const schema = makeExecutableSchema({ typeDefs, resolvers });
+    const subscriptionServer = SubscriptionServer.create(
+      {
+        schema,
+        execute,
+        subscribe,
+        onConnect: async ({ token }) => {
+          if (!token) {
+            throw new Error("You can't listen.");
+          }
+          const loggedInUser = await getUser(token);
+          return loggedInUser;
+        },
+      },
+      { server: httpServer }
+    );
 
     const apollo = new ApolloServer({
       schema,
-      context: async ({ req }) => {
-        return {
-          loggedInUser: await getUser(req.headers.token),
-          client,
-        };
+      context: async (ctx) => {
+        console.log(ctx);
+        if (ctx.req) {
+          return {
+            loggedInUser: await getUser(ctx.req.headers.token),
+            client,
+          };
+        }
       },
       plugins: [
         ApolloServerPluginDrainHttpServer({ httpServer }),
@@ -34,20 +54,13 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
           async serverWillStart() {
             return {
               async drainServer() {
-                await serverCleanup.dispose();
+                subscriptionServer.close();
               },
             };
           },
         },
       ],
     });
-
-    const wsServer = new WebSocketServer({
-      server: httpServer,
-      path: "/graphql",
-    });
-
-    const serverCleanup = useServer({ schema }, wsServer);
 
     await apollo.start();
 
