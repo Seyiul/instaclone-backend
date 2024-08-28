@@ -1,18 +1,14 @@
-require("dotenv").config();
-import { ApolloServer } from "apollo-server-express";
-import { typeDefs, resolvers } from "./schema";
-import { getUser } from "./users/user.utils";
-import client from "./client";
-import express from "express";
-import { graphqlUploadExpress } from "graphql-upload-ts";
-import logger from "morgan";
-import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
 import { createServer } from "http";
+import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
+import { makeExecutableSchema } from "@graphql-tools/schema";
 import { WebSocketServer } from "ws";
 import { useServer } from "graphql-ws/lib/use/ws";
-import { makeExecutableSchema } from "@graphql-tools/schema";
-import { SubscriptionServer } from "subscriptions-transport-ws";
-import { execute, subscribe } from "graphql";
+import express from "express";
+import { typeDefs, resolvers } from "./schema";
+import { ApolloServer } from "apollo-server-express";
+import client from "./client";
+import { getUser } from "./users/user.utils";
+import { graphqlUploadExpress } from "graphql-upload-ts";
 
 (async () => {
   try {
@@ -21,40 +17,16 @@ import { execute, subscribe } from "graphql";
     const app = express();
     const httpServer = createServer(app);
     const schema = makeExecutableSchema({ typeDefs, resolvers });
-    const subscriptionServer = SubscriptionServer.create(
-      {
-        schema,
-        execute,
-        subscribe,
-        onConnect: async ({ token }) => {
-          if (!token) {
-            throw new Error("You can't listen.");
-          }
-          const loggedInUser = await getUser(token);
-          return loggedInUser;
-        },
-      },
-      { server: httpServer }
-    );
 
-    const apollo = new ApolloServer({
+    const server = new ApolloServer({
       schema,
-      context: async (ctx) => {
-        console.log(ctx);
-        if (ctx.req) {
-          return {
-            loggedInUser: await getUser(ctx.req.headers.token),
-            client,
-          };
-        }
-      },
       plugins: [
         ApolloServerPluginDrainHttpServer({ httpServer }),
         {
           async serverWillStart() {
             return {
               async drainServer() {
-                subscriptionServer.close();
+                await serverCleanup.dispose();
               },
             };
           },
@@ -62,16 +34,39 @@ import { execute, subscribe } from "graphql";
       ],
     });
 
-    await apollo.start();
+    const wsServer = new WebSocketServer({
+      server: httpServer,
+      path: "/graphql",
+    });
+
+    const getDynamicContext = async (ctx, msg, args) => {
+      if (ctx.connectionParams.token) {
+        const loggedInUser = await getUser(ctx.connectionParams.token);
+        return { loggedInUser };
+      }
+      return { loggedInUser: null };
+    };
+
+    const serverCleanup = useServer(
+      {
+        schema,
+        context: async (ctx, msg, args) => {
+          return getDynamicContext(ctx, msg, args);
+        },
+      },
+      wsServer
+    );
+
+    await server.start();
 
     app.use(graphqlUploadExpress());
     app.use("/static", express.static("uploads"));
 
-    apollo.applyMiddleware({ app });
+    server.applyMiddleware({ app });
 
     httpServer.listen(PORT, () => {
       console.log(
-        `🚀 Server ready at http://localhost:${PORT}${apollo.graphqlPath}`
+        `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
       );
     });
   } catch (error) {

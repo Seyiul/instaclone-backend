@@ -8,7 +8,7 @@ export default {
   Subscription: {
     roomUpdates: {
       subscribe: async (root, args, context, info) => {
-        console.log(context);
+        console.log(context.loggedInUser);
         const room = await client.room.findUnique({
           where: {
             id: args.id,
