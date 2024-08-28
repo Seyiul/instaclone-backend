@@ -29,7 +29,8 @@
 - [x] Unfollow User
 - [x] See Followers and See Following w/ Pagination
 - [x] Computed Fields
-  - 데이터베이스에는 존재하지 않지만, graphQL Schema에는 존재하는 필드들을 의미한다. 매번 request를 받을 때마다 새롭게 계산되어 보여진다.
+  - 데이터베이스에는 존재하지 않지만, graphQL Schema에는 존재하는 필드들을 의미한다.
+  - 매번 request를 받을 때마다 새롭게 계산되어 보여진다.
 
 - [x] Search Users
 
