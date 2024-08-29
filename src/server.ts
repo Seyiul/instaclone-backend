@@ -20,6 +20,14 @@ import { graphqlUploadExpress } from "graphql-upload-ts";
 
     const server = new ApolloServer({
       schema,
+      context: async (ctx) => {
+        if (ctx.req) {
+          return {
+            loggedInUser: await getUser(ctx.req.headers.token),
+            client,
+          };
+        }
+      },
       plugins: [
         ApolloServerPluginDrainHttpServer({ httpServer }),
         {
@@ -42,6 +50,9 @@ import { graphqlUploadExpress } from "graphql-upload-ts";
     const getDynamicContext = async (ctx, msg, args) => {
       if (ctx.connectionParams.token) {
         const loggedInUser = await getUser(ctx.connectionParams.token);
+        if (loggedInUser === null) {
+          throw new Error("User not found.");
+        }
         return { loggedInUser };
       }
       return { loggedInUser: null };
