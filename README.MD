@@ -1,6 +1,9 @@
 # Instaclone
 
 ### Instaclone Backend
+## Schema
+![visualization-Instaclone-backend-xggnva@current](https://github.com/user-attachments/assets/67398001-9aa6-45f3-b1a0-42bc38dcfc73)
+
 
 ## **What's Included?**
 
