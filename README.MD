@@ -65,7 +65,7 @@
 - [x] Send Message
 - [x] See Message
 - [x] Computed Fields(read or unread)
-- [ ] Realtime Messages (not finished)
+- [x] Realtime Messages
 
 #### References
 
