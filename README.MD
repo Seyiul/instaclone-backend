@@ -2,8 +2,6 @@
 
 ### Instaclone Backend
 
-## **What's Included?**
-
 ### Features
 
 • ⚡ [React](https://ko.reactjs.org/) for Static Site Generator
@@ -66,6 +64,18 @@
 - [x] See Message
 - [x] Computed Fields(read or unread)
 - [x] Realtime Messages
+
+## Schema
+### Query
+![visualization-Instaclone-backend-xggnva@current](https://github.com/user-attachments/assets/67398001-9aa6-45f3-b1a0-42bc38dcfc73)
+
+### Mutation
+![visualization-Instaclone-backend-xggnva@current (2)](https://github.com/user-attachments/assets/640bfbe7-ce47-4ec9-b4aa-e34c4f44ab2e)
+
+### Subscription
+![visualization-Instaclone-backend-xggnva@current (1)](https://github.com/user-attachments/assets/b0c198bf-468c-446f-9ef9-bd35cec75340)
+## **What's Included?**
+
 
 #### References
 
