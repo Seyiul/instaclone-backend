@@ -5,6 +5,8 @@ import { GraphQLResolveInfo } from "graphql";
 export const getUser = async (token) => {
   try {
     if (!token) {
+      console.log("KOKOKOK");
+
       return null;
     }
     const verifiedToken: any = await jwt.verify(token, process.env.SECRET_KEY);
