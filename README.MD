@@ -27,6 +27,7 @@
 - [x] Unfollow User
 - [x] See Followers and See Following w/ Pagination
 - [x] Computed Fields
+
   - 데이터베이스에는 존재하지 않지만, graphQL Schema에는 존재하는 필드들을 의미한다.
   - 매번 request를 받을 때마다 새롭게 계산되어 보여진다.
 
@@ -66,16 +67,20 @@
 - [x] Realtime Messages
 
 ## Schema
+
 ### Query
+
 ![visualization-Instaclone-backend-xggnva@current](https://github.com/user-attachments/assets/67398001-9aa6-45f3-b1a0-42bc38dcfc73)
 
 ### Mutation
+
 ![visualization-Instaclone-backend-xggnva@current (2)](https://github.com/user-attachments/assets/640bfbe7-ce47-4ec9-b4aa-e34c4f44ab2e)
 
 ### Subscription
-![visualization-Instaclone-backend-xggnva@current (1)](https://github.com/user-attachments/assets/b0c198bf-468c-446f-9ef9-bd35cec75340)
-## **What's Included?**
 
+![visualization-Instaclone-backend-xggnva@current (1)](https://github.com/user-attachments/assets/b0c198bf-468c-446f-9ef9-bd35cec75340)
+
+## **What's Included?**
 
 #### References
 
@@ -87,3 +92,4 @@
 - [Migrateing AWS SDK from v2 to v3 for S3](https://dev.to/sw360cab/migrating-aws-sdk-from-v2-to-v3-for-s3-32lh)
 - [graphQL subscription](https://www.apollographql.com/docs/apollo-server/data/subscriptions/)
   - GraphQL Redis Server를 대체하여 사용
+- [Referential actions](https://www.prisma.io/docs/orm/prisma-schema/data-model/relations/referential-actions)
