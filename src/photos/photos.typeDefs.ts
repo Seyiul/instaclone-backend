@@ -1,5 +1,5 @@
 import { gql } from "apollo-server-express";
-
+import { Comment } from "@prisma/client";
 export default gql`
   type Photo {
     id: Int!
@@ -10,7 +10,8 @@ export default gql`
     createdAt: String!
     updatedAt: String!
     likes: Int!
-    comments: Int!
+    commentNumber: Int!
+    comments: [Comment]
     isMine: Boolean!
     isLiked: Boolean!
   }
